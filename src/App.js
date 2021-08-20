@@ -5,11 +5,18 @@ import {Patterns} from "./Patterns"
 
 function App() {
   const [board, setBoard] = useState(["","","","","","","","",""]);
-  const [player, setPlayer] = useState("X");
+  const [player, setPlayer] = useState("O");
   const [result, setResult] = useState({winner:"none", state: "none"});
 
   useEffect(()=>{
     checkwin();
+    checkIfTie();
+
+        if (player == "X") {
+          setPlayer("O");
+        } else {
+          setPlayer("X");
+        }
   },[board])
 
   useEffect(()=>{
@@ -27,11 +34,7 @@ function App() {
         return val;
       })
     );
-    if(player == "X"){
-      setPlayer("O")
-    }else{
-      setPlayer("X");
-    }
+
   };
 
   const checkwin = () => {
@@ -50,8 +53,23 @@ function App() {
     });
   };
 
+const checkIfTie = ()=> {
+  let filled = true;
+  board.forEach((square) =>{
+    if(square == "") {
+      filled = false;
+    }
+  })
+    if(filled){
+      setResult({winner: "No One", state: "Tied"});
+      restartGame();
+    };
+};
 
-
+const restartGame = () =>{
+  setBoard(["", "", "", "", "", "", "", "", ""]);
+  setPlayer("X");
+};
 
   return (
     <div className="App">
