@@ -13,7 +13,9 @@ function App() {
   },[board])
 
   useEffect(()=>{
+    if(result.state != "none"){
     alert(`Game Finished! Winning Player:${result.winner}`);
+    }
   },[result])
 
   const chooseSquare = (square) => {
