@@ -1,5 +1,3 @@
-
-
 import "./App.css";
 import { useState, useEffect } from "react";
 import Square from "./Components/Square";
@@ -40,6 +38,7 @@ function App() {
     );
   };
 
+  
   const checkWin = () => {
     Patterns.forEach((currPattern) => {
       const firstPlayer = board[currPattern[0]];
@@ -50,12 +49,15 @@ function App() {
           foundWinningPattern = false;
         }
       });
-
-      if (foundWinningPattern) {
-        setResult({ winner: player, state: "Won" });
-      }
+      winningPattern(foundWinningPattern);
     });
   };
+
+  Const ;winningPattern = (foundWinningPattern) => {
+	if (foundWinningPattern == true)
+	setResult({ winner: player, state: "Won" })
+}
+
 
   const checkIfTie = () => {
     let filled = true;
