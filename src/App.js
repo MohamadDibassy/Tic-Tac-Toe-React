@@ -1,4 +1,5 @@
-export default App;
+
+
 import "./App.css";
 import { useState, useEffect } from "react";
 import Square from "./Components/Square";
@@ -74,37 +75,32 @@ function App() {
     setPlayer("O");
   };
 
-    // Use two loops to make the squares
-    const boardSize = 3;
-    let squares = [];
-    for (let i = 0; i < boardSize; ++i) {
-      let row = [];
-      for (let j = 0; j < boardSize; ++j) {
-        row.push(
-          <Square
-            val={board[i * boardSize + j]}
-            chooseSquare={() => {
-              chooseSquare(i * boardSize + j);
-            }}
-          />
-        );
-       // squares.push(<div className="row"></div>); remove key;
-              squares.push(
-                <div key={i} className="row">
-                  {row}
-                </div>
-              );
-
-      }
-      //console.log(squares);
+  const boardSize = 3;
+  let squares = [];
+  for (let i = 0; i < boardSize; ++i) {
+    let row = [];
+    for (let j = 0; j < boardSize; ++j) {
+      row.push(
+        <Square
+          val={board[i * boardSize + j]}
+          chooseSquare={() => {
+            chooseSquare(i * boardSize + j);
+          }}
+        />
+      );
     }
-    return (
-      <div className="App">
-        <div className="board">
-          <div>{squares}</div>
-        </div>
+    squares.push(
+      <div key={i} className="row">
+        {row}
       </div>
     );
-
   }
+  return (
+    <div className="App">
+      <div className="board">
+        <div>{squares}</div>
+      </div>
+    </div>
+  );
+}
 export default App;
