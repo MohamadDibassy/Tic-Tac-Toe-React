@@ -53,7 +53,7 @@ function App() {
     });
   };
 
-  Const ;winningPattern = (foundWinningPattern) => {
+  const winningPattern = (foundWinningPattern) => {
 	if (foundWinningPattern == true)
 	setResult({ winner: player, state: "Won" })
 }
