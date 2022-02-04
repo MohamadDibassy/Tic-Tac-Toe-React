@@ -5,19 +5,11 @@ import { Patterns } from "./Patterns";
 
 function App() {
   const [board, setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
-  // const [player, setPlayer] = useState("O");
-  // const [result, setResult] = useState({ winner: "none", state: "none" });
   const O_TEXT = "0";
   const X_TEXT = "X";
   useEffect(() => {
     checkWin();
     checkIfTie();
-
-    // if (player == "X") {
-    //   setPlayer("O");
-    // } else {
-    //   setPlayer("X");
-    // }
   }, [board]);
 
   useEffect(() => {
@@ -44,7 +36,7 @@ function App() {
     );
   };
 
-  const currentPlayerFromState = () => {
+  const currentPlayerFromState = (board) => {
     const numXs = board.filter((b) => b === X_TEXT).length;
     const numOs = board.filter((b) => b === O_TEXT).length;
     return numXs < numOs ? X_TEXT : O_TEXT;
@@ -63,7 +55,6 @@ function App() {
       });
 
       if (foundWinningPattern) {
-        // setResult({ winner: currentPlayer, state: "Won" });
         return true;
       }
     });
@@ -76,16 +67,10 @@ function App() {
         filled = false;
       }
     });
-
-    // if (filled) {
-    //   // setResult({ winner: "No One", state: "Tie" });
-
-    // }
   };
 
   const restartGame = () => {
     setBoard(["", "", "", "", "", "", "", "", ""]);
-    // setPlayer("O");
   };
 
   return (
@@ -155,6 +140,7 @@ function App() {
     </div>
   );
 }
+export default App;
 
 
 
