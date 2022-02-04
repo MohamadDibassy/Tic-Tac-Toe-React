@@ -76,7 +76,7 @@ function App() {
   };
 
   const boardSize = 3;
-  let squares = [];
+  let rows = [];
   for (let i = 0; i < boardSize; ++i) {
     let row = [];
     for (let j = 0; j < boardSize; ++j) {
@@ -89,7 +89,7 @@ function App() {
         />
       );
     }
-    squares.push(
+    rows.push(
       <div key={i} className="row">
         {row}
       </div>
@@ -98,7 +98,7 @@ function App() {
   return (
     <div className="App">
       <div className="board">
-        <div>{squares}</div>
+        {rows}
       </div>
     </div>
   );
