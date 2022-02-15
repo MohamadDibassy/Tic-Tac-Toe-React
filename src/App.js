@@ -37,7 +37,7 @@ function App() {
   };
 
   const currentPlayerFromState = (board) => {
-    const numXs = board.filter((b) => b === X_TEXT).length;
+    const numXs = board.filter((b)=> b === X_TEXT).length;
     const numOs = board.filter((b) => b === O_TEXT).length;
     return numXs < numOs ? X_TEXT : O_TEXT;
   };
