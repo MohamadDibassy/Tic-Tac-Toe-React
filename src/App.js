@@ -13,11 +13,12 @@ function App() {
   }, [board]);
 
   useEffect(() => {
-    if (checkWin().foundWinningPattern == true) {
-      const currentPlayer = currentPlayerFromState();
-      alert(`Game Finished! Winning Player: ${currentPlayer}`);
-      restartGame();
-    } else if (checkIfTie.filled == "true") {
+      if (checkWin.foundWinningPattern == true) {
+        const currentPlayer = currentPlayerFromState();
+        alert(`Game Finished! Winning Player: ${currentPlayer}`);
+        restartGame();
+      }
+     else if (checkIfTie.filled == "true") {
       alert(`Game Finished! Winning Player: none`);
       restartGame();
     }
@@ -37,11 +38,12 @@ function App() {
   };
 
   const currentPlayerFromState = (board) => {
-    const numXs = board.filter((b)=> b === X_TEXT).length;
-    const numOs = board.filter((b) => b === O_TEXT).length;
-    return numXs < numOs ? X_TEXT : O_TEXT;
+    if (board !== undefined) {
+      const numXs = board.filter((b) => b === X_TEXT).length;
+      const numOs = board.filter((b) => b === O_TEXT).length;
+      return numXs < numOs ? X_TEXT : O_TEXT;
+    }
   };
-
   const checkWin = () => {
     const currentPlayer = currentPlayerFromState();
     Patterns.forEach((currPattern) => {
@@ -141,6 +143,3 @@ function App() {
   );
 }
 export default App;
-
-
-
